@@ -1,5 +1,17 @@
 <template name="addShop">
-	<div>
-		Add shop
-	</div>
+	<form class="main form">
+		<div class="form-group">
+			<label class="control-label" for="shopName">Название</label>
+			<div class="controls">
+				<input name="shopName" id="shopName" type="text" placeholder="Название магазина" class="form-control" value="{{shopName}}"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="address">Адрес</label>
+			<div class="controls">
+				<input name="address" id="address" type="text" value="" placeholder="Адрес магазина" class="form-control"/>
+			</div>
+		</div>
+		<input type="submit" value="Сохранить" data-action="submitAddShop" class="btn btn-primary"/>
+	</form>
 </template>

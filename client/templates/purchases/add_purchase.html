@@ -1,0 +1,78 @@
+<template name="addPurchase">
+	<form class="main form">
+		<div class="form-group">
+			<label class="control-label" for="shopName">Магазин</label>
+			<div class="controls">
+			{{#if newShopAddTrigger }}
+				{{> addShop}}
+			{{else}}
+				{{> inputAutocomplete settings=settings id="shopName" class="form-control" placeholder="Название магазина" name="shopName" data-supplier-id="new"}}
+			{{/if}}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="datePurchase">Дата покупки</label>
+			<div class="row">
+  				<div class="col-md-2">
+  					<div class="controls">
+						<input type="text" class="form-control" id="datePurchase" 
+						placeholder="Дата покупки">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">Товары</label>
+			{{#each records}}
+				{{> record}}
+			{{/each}}
+		</div>
+
+		
+		<div class="form-group">
+			<label class="control-label" for="productName">Добавить запись</label>
+			<div class="row">
+  				<div class="col-md-10">
+  				{{#if newItemAddTrigger }}
+					{{> addItem}}
+				{{else}}
+					{{> inputAutocomplete settings=settingsItems id="itemName" class="form-control" placeholder="Название товара" name="itemName" data-supplier-id="new"}}	
+				{{/if}}
+  				</div>
+  				<div class="col-md-2">
+  					<input type="submit" value="Submit" class="btn btn-primary"/>
+  				</div>
+  			</div>		
+		</div>
+		
+		<input type="submit" value="Сохранить" class="btn btn-primary"/>
+	</form>
+</template>
+
+<template name="NoMatchTemplate">
+	trualala
+</template>
+
+<!-- <div class="form-group">
+				<label class="control-label" for="productName">Добавить новый продукт</label>
+				<div class="row">
+				  				<div class="col-md-10">
+				  					<input name="productName" id="productName" type="text" value="" placeholder="Name your product" class="form-control"/>	
+				  				</div>
+				  				<div class="col-md-2">
+				  					<input type="submit" value="Submit" class="btn btn-primary"/>
+				  				</div>
+				  			</div>		
+			</div> -->
+		
+		
+		<!-- records
+		{{> purchaseRecords purchaseId=purchaseId}} -->
+
+		<!-- <div class="form-group">
+			<label class="control-label" for="address">Адрес</label>
+			<div class="controls">
+				<input name="address" id="address" type="text" value="" placeholder="Адрес магазина" class="form-control"/>
+			</div>
+		</div> -->

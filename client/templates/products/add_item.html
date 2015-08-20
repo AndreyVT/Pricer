@@ -1,0 +1,11 @@
+<template name="addItem">
+	<form class="main form">
+		<div class="form-group">
+			<label class="control-label" for="itemName">Название</label>
+			<div class="controls">
+				<input name="itemName" id="itemName" type="text" placeholder="Название товара" class="form-control" value="{{itemName}}"/>
+			</div>
+		</div>
+		<input type="submit" value="Сохранить" data-action="submitAddItem" class="btn btn-primary"/>
+	</form>
+</template>
