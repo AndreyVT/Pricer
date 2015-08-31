@@ -4,3 +4,4 @@ Pricer
 #mizzao:autocomplete
 #rajit:bootstrap3-datepicker 
 #momentjs:moment
+#manuel:reactivearray

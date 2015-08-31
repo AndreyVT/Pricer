@@ -3,6 +3,7 @@ Template.addItem.events({
 		e.preventDefault() ;
 		var item = {};
 		item.name = $('#itemName').val();
+		item.unitId = $('#itemUnit').find(":selected").val();
 		item._id = Items.insert(item);
 		Session.set("item.name", false);
 	}
@@ -11,5 +12,8 @@ Template.addItem.events({
 Template.addItem.helpers({
 	itemName : function(){
 		return Session.get("item.name");
+	},
+	units: function(){
+		return Units.find().fetch();
 	}
 });

@@ -1,7 +1,10 @@
 <template name="purchaseItem">
 	<div class="row">
-	  <div class="col-md-11">
-	  	<h3><a href="{{userId}}">{{title}}</a><span>{{shop}}</span></h3>
+	  <div class="col-md-6">
+	  	<h4><a href="\shop\{{shop._id}}">{{shop.shopName}}</a></h4><br/>
+	  	<h5>{{shop.address}}</h5>
+	  </div>
+	  <div class="col-md-5">
 	  </div>
 	  <div class="col-md-1">
 	  	<button type="button" class="btn btn-warning btn-xs" 

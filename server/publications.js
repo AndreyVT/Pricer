@@ -33,3 +33,7 @@ Meteor.publish('records', function(options) {
   });*/
   return Records.find({}, options);
 });
+
+Meteor.publish('units', function(options){
+  return Units.find({}, options);
+});

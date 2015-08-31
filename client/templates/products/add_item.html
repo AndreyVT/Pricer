@@ -5,6 +5,18 @@
 			<div class="controls">
 				<input name="itemName" id="itemName" type="text" placeholder="Название товара" class="form-control" value="{{itemName}}"/>
 			</div>
+			<label class="control-label" for="itemUnit">Единица измерения</label>
+			
+			<div class="controls">
+				<select name="itemUnit" id="itemUnit" class="form-control">
+					{{#each units}}
+						<option value="{{_id}}">
+							{{name}}
+						</option>
+					{{/each}}
+				</select>
+				
+			</div>
 		</div>
 		<input type="submit" value="Сохранить" data-action="submitAddItem" class="btn btn-primary"/>
 	</form>

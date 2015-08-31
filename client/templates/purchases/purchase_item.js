@@ -7,10 +7,8 @@ Template.purchaseItem.events({
 });
 
 Template.purchaseItem.helpers({
-	title: function(){
+	shop: function(){
 		var shop = Shops.findOne({_id:this.shopId});
-		console.log("purchase_item shop::", shop);
-		console.log("purchase_item purchase::", this);
-		return shop.shopName;
+		return shop;
 	}
 });

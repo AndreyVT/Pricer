@@ -11,8 +11,7 @@ Template.addPurchase.events({
     for (var i = records.length - 1; i >= 0; i--) {
       var record = records[i];
       record.purchaseId = purchase.id;
-      consoloe.log(i, "::", record);
-      //Records.insert(record);
+      Records.insert(record);
     };
 
     Router.go('purchasesList');
@@ -25,18 +24,10 @@ Template.addPurchase.events({
     
     $('#priceValue').val('');
     $('#itemName').val('');
+    //console.log(lastAddedItem);
     lastAddedItem = {};
 
-    Template.addPurchase.recordsList.push(record);
-    console.log(Template.addPurchase.recordsList);
-    /*Meteor.call('addNewRecord' , record, function(error, recordId) {
-      if (error) {
-        throwError(error.reason) ;
-      } else {
-        record.id = recordId;
-    
-      }
-    });*/
+    records.push(record);
   }
 }) ;
 
@@ -72,34 +63,19 @@ Template.addPurchase.helpers({
   purchaseId: function(){
     return purchase.id;
   },
-  /*records: function(){
-    return Records.find({purchaseId: this._id});
-  },*/
+  recordsItem: function(){
+    return records.list();
+  },
   newShopAddTrigger: function(){
     return Session.get("shop.name");
   },
   newItemAddTrigger: function(){
     return Session.get("item.name");
-  },
-  lastAddedItem: {},
-  selectedShop: {},
-  records: function(){
-    return Template.addPurchase.recordsList;
   }
 });
 
-Template.addPurchase.recordsList = [];
-
 Template.addPurchase.onCreated(function(){
-  /*Meteor.call('addNewPurchase' , {}, function(error, purchaseId) {
-      if (error) {
-        throwError(error.reason) ;
-      } else {
-        purchase.id = purchaseId;
-      }
-    });
-
-    return purchase.id;*/
+  records = new ReactiveArray([]);
 });
 
 Template.addPurchase.rendered = function() {
@@ -120,25 +96,19 @@ Template.addPurchase.rendered = function() {
 Template.addPurchase.events({
   "autocompleteselect #shopName": function(event, template, doc) {
     selectedShop = doc;
-    //var result = Purchases.update({_id: purchase.id}, {$set: {shopId: doc._id}});
-  /*  console.log("purchase:: ", purchase);
-    console.log("selected Shop =====", doc);
-    console.log("selected Shop this =====", this);
-    console.log("updateResult =====", result);*/
   },
   "autocompleteselect #itemName": function(event, template, doc) {
-    //console.log("Selected item ::", doc);
-    //lastItemId = doc._id;
     lastAddedItem = doc;
-    //purchase.shopId = doc._id;
-    //console.log("purchase:: ", purchase);
+    var unit = Units.findOne({_id:doc.unitId});
+    $('#countValueLabel').html(unit.name);
   }
 });
 
 Template.addPurchase.events({
   "keydown #priceValue" : function(event){
+    console.log(event.keyCode);
     // Allow: backspace, delete, tab, escape, enter and .
-    if (jQuery.inArray(event.keyCode,[46,8,9,27,13,190]) !== -1 ||
+    if (jQuery.inArray(event.keyCode,[46,8,9,27,13,190,191]) !== -1 ||
          // Allow: Ctrl+A
         (event.keyCode == 65 && event.ctrlKey === true) || 
          // Allow: home, end, left, right
@@ -153,15 +123,4 @@ Template.addPurchase.events({
         }   
     }
   },
-  /*"blur #datePurchase" : function(event, template){
-    console.log('Event:: ', event);
-    console.log('New date:: ', $('#datePurchase')[0].value);
-    console.log('Template:: ', template);
-    var newDate = $('#datePurchase').val();
-    console.log('New date:: ', $('#datePurchase'));
-    
-    console.log('New date:: ', newDate);
-    var result = Purchases.update({_id: purchase.id}, {$set: {date: newDate}})  
-    //console.log('Result update:: ', result);
-  }*/
 });
