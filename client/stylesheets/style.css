@@ -10,6 +10,17 @@ body {
 	background: #eee;
 	color: #666666;
 }
+html, body, .container{
+    height: 100%;
+}
+.container{
+    display: table;
+    vertical-align: middle;
+}
+.vertical-center-row{
+    display: table-cell;
+    vertical-align: middle;
+}
 
 .navbar { margin-bottom: 10px }
 .navbar .navbar-inner {	border-radius: 0px 0px 3px 3px; }
