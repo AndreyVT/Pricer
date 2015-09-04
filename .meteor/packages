@@ -7,10 +7,10 @@
 meteor-platform
 iron:router
 accounts-password
-ian:accounts-ui-bootstrap-3
 twbs:bootstrap
 mizzao:autocomplete
 rajit:bootstrap3-datepicker
 momentjs:moment
 insecure
 manuel:reactivearray
+accounts-ui

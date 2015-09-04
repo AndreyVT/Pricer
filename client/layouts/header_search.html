@@ -1,8 +1,32 @@
 <template name="headerSearch">
 	<header>
-		<div class="navbar navbar-default" role="navigation">
+        <div class="masthead">
+            <div class="row">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <div class="nav pull-right">
+                                {{> loginButtons}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{#if isLogged}}
+            <div class="row">
+                <ul class="nav nav-justified">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="{{pathFor 'addPurchase' }}" class="discuss btn">Add  purchase</a></li>
+                    <li><a href="{{pathFor 'addShop' }}" class="discuss btn">Add  shop</a></li>
+                    <li><a href="{{pathFor 'shopsList' }}" class="discuss btn">List shop</a></li>
+                    <li><a href="#">O ...</a></li>
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+		<!-- <div class="navbar navbar-default" role="navigation">
 		   <div class="navbar-header" id="headerSearchDiv">
-		   <!--     <a class="navbar-brand" href="/">Pricer</a> -->
 		   </div>
 		    <div class="navbar-collapse collapse">
 		   		{{#if isLogged}}
@@ -16,6 +40,6 @@
 		            {{> loginButtons}}
 		        </ul>
 		    </div>
-		</div>   
+		</div> -->   
 	</header>
 </template>		
