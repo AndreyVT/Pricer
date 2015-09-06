@@ -1,23 +1,48 @@
 <template name="searchLayout">
-  <div class="container">
-      {{> headerSearch}}
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+  <div class="cont">
+      <div class="header">
+        {{> headerSearch}}
       </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        {{> yield}}
+      
+      <div class="block">
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-2">
+            <h2>PRICER</h2>
+          </div>
+          <div class="col-md-5"></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="input-group">
+              <input type="text" id="searchText" name="searchText" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+     
+        
+      <div>
+        <div class="row">
+          {{> yield}}
+        </div>
       </div>
 
       <!-- Site footer -->
-      <div class="footer">
-        <p>&copy; Company 2014</p>
-      </div>
-
+      <div>
+        <div class="footer">
+          <p>&copy; Company 2014</p>
+        </div>
+    </div>
+    
     </div> <!-- /container -->
   
 </template>
