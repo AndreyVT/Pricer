@@ -1,8 +1,41 @@
 <template name="layout">
-	<div class="container">
-		{{> header}}
-		<div id="main" class="container">
-			{{> yield}}
-		</div>
-	</div>
+	 <!-- Fixed navbar -->
+    {{> header}}
+
+    <!-- Begin page content -->
+    <div class="container">
+      {{> yield}}
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </div>
+	
 </template>
+
+<!--
+	<div class="cont">
+      <div class="header">
+        {{> header}}
+      </div>
+      
+      <div class="block">
+        <div class="row">
+			<div class="col-md-3"></div>
+          	<div class="col-md-6">
+          		{{> yield}}
+			</div>
+			<div class="col-md-3"></div>
+        </div>
+      </div>
+
+    
+	<div>
+		<div class="footer">
+			<p>&copy; Company 2014</p>
+		</div>
+    </div>
+    
+    </div>  -->
