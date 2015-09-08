@@ -1,3 +1,5 @@
+/* global Router */
+/* global records */
 Template.addPurchase.events({
   'submit form': function(e) {
     e.preventDefault();
@@ -71,6 +73,9 @@ Template.addPurchase.helpers({
   },
   newItemAddTrigger: function(){
     return Session.get("item.name");
+  },
+  recordsCount: function(){
+    return records.length > 0;
   }
 });
 

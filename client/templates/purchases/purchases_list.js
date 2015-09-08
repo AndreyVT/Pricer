@@ -3,3 +3,10 @@ Template.purchasesList.helpers({
 		return Purchases.find();
 	}
 });
+
+Template.purchasesList.events({
+  	"click [data-action='gotoAddPurchase']" : function(e) {
+    	e.preventDefault() ;
+		Router.go('addPurchase');
+  	}
+  });

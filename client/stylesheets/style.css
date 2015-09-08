@@ -1,0 +1,17 @@
+.no-wrap{
+	vertical-align: middle;
+	margin-top: 25px;
+}
+
+.vertical-middle {
+	vertical-align: middle;
+}
+
+.nav > li > div {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+	text-decoration: none;
+	padding-top: 15px;
+    padding-bottom: 15px;
+}
