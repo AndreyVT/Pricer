@@ -1,13 +1,12 @@
 <template name="purchaseItem">
 	<div class="row">
 	  <div class="col-md-6">
-	  	<h4><a href="\shop\{{shop._id}}">{{shop.shopName}}</a></h4><br/>
-	  	<h5>{{shop.address}}</h5>
+        <a href="\shop\{{shop._id}}"><h4>{{shop.shopName}}<small> {{shop.address}}</small></h4></a>
 	  </div>
 	  <div class="col-md-5">
 	  </div>
 	  <div class="col-md-1">
-	  	<button type="button" class="btn btn-warning btn-xs" 
+	  	<button type="button" class="btn btn-danger btn-xs" 
 	  		data-action='removePurchase'>
 	  		<span class="glyphicon glyphicon-remove"></span>
 	  	</button>

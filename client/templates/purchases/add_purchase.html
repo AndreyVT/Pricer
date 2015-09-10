@@ -18,7 +18,7 @@
 				<label class="control-label" for="shopName">Магазин</label>
 				<div class="controls">
 					{{#if newShopAddTrigger }}
-						{{> addShop}}
+						{{> addShop parentTemplate=this}}
 					{{else}}
 						{{> inputAutocomplete settings=settings id="shopName" class="form-control" placeholder="Название магазина" name="shopName" data-supplier-id="new"}}
 					{{/if}}

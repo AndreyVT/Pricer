@@ -109,6 +109,14 @@ Template.addPurchase.events({
   }
 });
 
+////////////////////////////////////////////////
+Template.addPurchase.setShop = function(addedShop)
+{
+    selectedShop = addedShop;
+    $('#shopName').val(selectedShop.shopName);
+}
+////////////////////////////////////////////////
+
 Template.addPurchase.events({
   "keydown #priceValue" : function(event){
     console.log(event.keyCode);
