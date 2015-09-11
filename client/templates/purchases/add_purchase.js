@@ -68,7 +68,7 @@ Template.addPurchase.helpers({
   recordsItem: function(){
     return records.list();
   },
-  newShopAddTrigger: function(){
+  newShopAddTrigger: function () {
     return Session.get("shop.name");
   },
   newItemAddTrigger: function(){
@@ -99,22 +99,22 @@ Template.addPurchase.rendered = function() {
 
 //Для отслеживания если нужно завершения ввода значения в инпут поиска...
 Template.addPurchase.events({
-  "autocompleteselect #shopName": function(event, template, doc) {
-    selectedShop = doc;
-  },
-  "autocompleteselect #itemName": function(event, template, doc) {
-    lastAddedItem = doc;
-    var unit = Units.findOne({_id:doc.unitId});
-    $('#countValueLabel').html(unit.name);
-  }
+    "autocompleteselect #shopName": function (event, template, doc) {
+        selectedShop = doc;
+    },
+    "autocompleteselect #itemName": function(event, template, doc) {
+        lastAddedItem = doc;
+        var unit = Units.findOne({_id:doc.unitId});
+        $('#countValueLabel').html(unit.name);
+    },
 });
 
 ////////////////////////////////////////////////
-Template.addPurchase.setShop = function(addedShop)
+/*Template.addPurchase.setShop = function(addedShop)
 {
     selectedShop = addedShop;
     $('#shopName').val(selectedShop.shopName);
-}
+}*/
 ////////////////////////////////////////////////
 
 Template.addPurchase.events({
