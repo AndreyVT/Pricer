@@ -1,37 +1,46 @@
 /* global Router */
 /* global records */
 Template.addPurchase.events({
-  'submit form': function(e) {
+  'submit form': function(e, template) {
     e.preventDefault();
     var purchase = {};
-    purchase.shopId = selectedShop._id;
+    purchase.shopId = template.selectedShop.get()._id;
     purchase.date = $('#datePurchase').val();
     purchase.userId = Meteor.userId();
 
     purchase.id = Purchases.insert(purchase);
 
-    for (var i = records.length - 1; i >= 0; i--) {
-      var record = records[i];
+    for (var i = template.records.length - 1; i >= 0; i--) {
+      var record = template.records[i];
       record.purchaseId = purchase.id;
       Records.insert(record);
     };
 
-    Router.go('purchasesList');
+    Router.go('purchases');
   },
-  "click [data-action='addRecord']" : function(e) {
+  "click [data-action='addRecord']" : function(e, template) {
     e.preventDefault() ;
     var record = {};
     record.price =  $('#priceValue').val();
-    record.itemId = lastAddedItem._id;
-    
+    record.itemId = template.lastAddedItem.get()._id;
+    record.count = $('#countValue').val();
+    record.num = template.counter.get() + 1;
+    record.sum = record.count * record.price;
+
+    $('#countValue').val(1);
     $('#priceValue').val('');
     $('#itemName').val('');
-    //console.log(lastAddedItem);
+
     lastAddedItem = {};
 
-    records.push(record);
+    template.records.push(record);
+
+    template.counter.set(record.num);
+    template.lastAddedItem.set({});
+
+    template.purchaseSum.set(template.purchaseSum.get() + record.sum);
   }
-}) ;
+});
 
 Template.addPurchase.helpers({
   settings: function() {
@@ -66,7 +75,7 @@ Template.addPurchase.helpers({
     return purchase.id;
   },
   recordsItem: function(){
-    return records.list();
+    return Template.instance().records.list();
   },
   newShopAddTrigger: function () {
     return Session.get("shop.name");
@@ -74,13 +83,28 @@ Template.addPurchase.helpers({
   newItemAddTrigger: function(){
     return Session.get("item.name");
   },
-  recordsCount: function(){
-    return records.length > 0;
+  recordsCount : function()  {
+    return Template.instance().counter.get() > 0;
+  },
+  realItemAdded : function(){
+    return Template.instance().lastAddedItem.get()._id;
+  },
+  allowSavePurchase : function(){
+    return (Template.instance().selectedShop.get()._id &&
+            Template.instance().counter.get() > 0);
+  },
+  purchaseSum : function()
+  {
+    return Template.instance().purchaseSum.get();
   }
 });
 
 Template.addPurchase.onCreated(function(){
-  records = new ReactiveArray([]);
+  this.records = new ReactiveArray([]);
+  this.counter = new ReactiveVar(0);
+  this.lastAddedItem = new ReactiveVar({});
+  this.selectedShop = new ReactiveVar({});
+  this.purchaseSum = ReactiveVar(0);
 });
 
 Template.addPurchase.rendered = function() {
@@ -100,26 +124,18 @@ Template.addPurchase.rendered = function() {
 //Для отслеживания если нужно завершения ввода значения в инпут поиска...
 Template.addPurchase.events({
     "autocompleteselect #shopName": function (event, template, doc) {
-        selectedShop = doc;
+      template.selectedShop.set(doc)
     },
     "autocompleteselect #itemName": function(event, template, doc) {
-        lastAddedItem = doc;
+        //lastAddedItem = doc;
+        template.lastAddedItem.set(doc);
         var unit = Units.findOne({_id:doc.unitId});
         $('#countValueLabel').html(unit.name);
     },
 });
 
-////////////////////////////////////////////////
-/*Template.addPurchase.setShop = function(addedShop)
-{
-    selectedShop = addedShop;
-    $('#shopName').val(selectedShop.shopName);
-}*/
-////////////////////////////////////////////////
-
 Template.addPurchase.events({
   "keydown #priceValue" : function(event){
-    console.log(event.keyCode);
     // Allow: backspace, delete, tab, escape, enter and .
     if (jQuery.inArray(event.keyCode,[46,8,9,27,13,190,191]) !== -1 ||
          // Allow: Ctrl+A

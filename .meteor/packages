@@ -14,3 +14,4 @@ momentjs:moment
 insecure
 manuel:reactivearray
 accounts-ui
+reactive-var

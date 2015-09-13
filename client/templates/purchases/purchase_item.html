@@ -3,13 +3,43 @@
 	  <div class="col-md-6">
         <a href="\shop\{{shop._id}}"><h4>{{shop.shopName}}<small> {{shop.address}}</small></h4></a>
 	  </div>
-	  <div class="col-md-5">
-	  </div>
+	  <div class="col-md-4"></div>
 	  <div class="col-md-1">
-	  	<button type="button" class="btn btn-danger btn-xs" 
-	  		data-action='removePurchase'>
-	  		<span class="glyphicon glyphicon-remove"></span>
+	  	<button type="button" class="btn btn-primary btn-xs"
+	  		data-action='showPurchaseRecords'>
+            {{#if showPurchaseRecords}}
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            {{else}}
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            {{/if}}
 	  	</button>
 	  </div>
-	</div>  
+
+        <div class="col-md-1">
+            <button type="button" class="btn btn-danger btn-xs"
+                    data-action='removePurchase'>
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+	</div>
+    {{#if showPurchaseRecords}}
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Название</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма : {{purchaseSum}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each recordsItem}}
+                {{> record}}
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/if}}
 </template>

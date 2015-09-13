@@ -1,11 +1,9 @@
 <template name="record">
-	<div class="panel panel-default">
-  		<div class="panel-body">
-  			{{#if purchaseId}}
-				Покупка:{{purchaseId}} <br/>
-			{{/if}}
-			Цена: {{price}} <br/>
-			Товар: {{name}}
-		</div>
-	</div>
+    <tr>
+        <td>{{num}}</td>
+        <td>{{name}}</td>
+        <td>{{count}}</td>
+        <td>{{price}}</td>
+        <td>{{sum}}</td>
+    </tr>
 </template>
