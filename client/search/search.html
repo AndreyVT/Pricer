@@ -1,23 +1,36 @@
 <template name="search">
-	<div class="row">
-          <div class="col-md-5"></div>
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-5"></div>
-        </div>
-        
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             <div class="input-group">
-              <input type="text" id="searchText" name="searchText" class="form-control">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-              </span>
+                <input type="text" id="searchText" name="searchText" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" data-action="search">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
             </div>
-          </div>
         </div>
         <div class="col-md-3"></div>
+    </div>
+
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <ul>
+                    {{#each searchItems}}
+                    <li>{{> searchItem}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
 </template>
