@@ -1,4 +1,4 @@
-Template.search.events({
+﻿Template.search.events({
     "click [data-action='search']": function (e, template) {
         e.preventDefault();
         template.searchResults.clear();
@@ -20,3 +20,7 @@ Template.search.onCreated(function () {
     this.searchText = new ReactiveVar(0);
     this.searchResults = new ReactiveArray([]);
 });
+
+Template.search.rendered = function () {
+    //$('#searchText').val('еб');
+};

@@ -1,4 +1,4 @@
-<template name="search">
+﻿<template name="search">
     <div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-2"></div>
@@ -21,14 +21,24 @@
     </div>
 
     <div class="page-header">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                {{#each searchItems}}
-                    {{> searchItem}}
-                {{/each}}
-            </div>
-            <div class="col-md-3"></div>
-        </div>
     </div>
+    
+    {{#if searchItems}}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr><th>Название</th><th>Минимальная цена</th><th>Максимальная цена</th></tr>
+                </thead>
+                <tbody>
+                    {{#each searchItems}}
+                        {{> searchItem}}
+                    {{/each}}
+                </tbody>
+            </table>         
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    {{/if}}
 </template>

@@ -1,6 +1,13 @@
 ﻿<template name="searchItem">
-    <h4>{{name}}</h4>
-    <h5>{{minPrice}}</h5>
-    <h5>{{maxPrice}}</h5>
-    
+    <tr>
+        <td>
+            <h4>{{name}}</h4>
+        </td>
+        <td>
+            <h4><small>{{minPrice.date}}: <strong>{{minPrice.shopName}}</strong> : {{minPrice.price}} руб.</small></h4>
+        </td>
+        <td>
+            <h4><small>{{maxPrice.date}}: <strong>{{maxPrice.shopName}}</strong> : {{maxPrice.price}} руб.</small></h4>
+        </td>
+    </tr>
 </template>
