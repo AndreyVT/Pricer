@@ -4,7 +4,10 @@ Template.addItem.events({
 		var item = {};
 		item.name = $('#itemName').val();
 		item.unitId = $('#itemUnit').find(":selected").val();
-		item._id = Items.insert(item);
+		//item._id = Items.insert(item);
+		Session.set("addedItem", item);
+		$('#recordItem').val(item.name);
+		
 		Session.set("item.name", false);
 	}
 }) ;

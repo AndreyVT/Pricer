@@ -29,7 +29,7 @@ Template.addPurchase.events({
 
     $('#countValue').val(1);
     $('#priceValue').val('');
-    $('#itemName').val('');
+    $('#recordItem').val('');
 
     lastAddedItem = {};
 
@@ -51,6 +51,7 @@ Template.addPurchase.helpers({
         {
           collection: Shops,
           field: "shopName",
+          options: 'i',
           template: Template.shopSearchItem,
           noMatchTemplate: Template.noMatchShop
         }
@@ -65,6 +66,7 @@ Template.addPurchase.helpers({
         {
           collection: Items,
           field: "name",
+          options: 'i',
           template: Template.productSearchItem,
           noMatchTemplate: Template.noMatchItem
         }
@@ -126,7 +128,7 @@ Template.addPurchase.events({
     "autocompleteselect #shopName": function (event, template, doc) {
       template.selectedShop.set(doc)
     },
-    "autocompleteselect #itemName": function(event, template, doc) {
+    "autocompleteselect #recordItem": function (event, template, doc) {
         //lastAddedItem = doc;
         template.lastAddedItem.set(doc);
         var unit = Units.findOne({_id:doc.unitId});
