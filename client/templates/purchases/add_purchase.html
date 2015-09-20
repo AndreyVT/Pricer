@@ -1,4 +1,5 @@
 <template name="addPurchase">
+	{{> addShop}}
 	<form class="main form">
 		<div class="page-header">
 			<div class="row">
@@ -14,7 +15,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="row">
 			<div class="col-md-4">
 				<label class="control-label" for="shopName">Магазин</label>
@@ -26,7 +27,7 @@
 					{{/if}}
 				</div>
 			</div>
-			
+
 			<div class="col-md-2">
 				<label class="control-label" for="datePurchase">Дата</label>
 				<div class="controls">
@@ -34,7 +35,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="page-header">
 			<div class="form-group">
 				<label class="control-label" for="productName">Добавить запись</label>
@@ -43,7 +44,7 @@
 				{{else}}
 					<div class="row">
 						<div class="col-md-5">
-							{{> inputAutocomplete settings=settingsItems id="recordItem" class="form-control" placeholder="Название товара" name="recordItem" data-supplier-id="new"}}	
+							{{> inputAutocomplete settings=settingsItems id="recordItem" class="form-control" placeholder="Название товара" name="recordItem" data-supplier-id="new"}}
 						</div>
                         {{#if realItemAdded}}
                             <div class="col-md-1">
@@ -66,11 +67,11 @@
                                 </button>
                             </div>
                         {{/if}}
-					</div>		
+					</div>
 				{{/if}}
 			</div>
 		</div>
-		
+
 		{{#if recordsCount}}
             <div class="page-header">
                 <h4>Товары</h4>
@@ -99,15 +100,15 @@
 				<label class="control-label" for="productName">Добавить новый продукт</label>
 				<div class="row">
 				  				<div class="col-md-10">
-				  					<input name="productName" id="productName" type="text" value="" placeholder="Name your product" class="form-control"/>	
+				  					<input name="productName" id="productName" type="text" value="" placeholder="Name your product" class="form-control"/>
 				  				</div>
 				  				<div class="col-md-2">
 				  					<input type="submit" value="Submit" class="btn btn-primary"/>
 				  				</div>
-				  			</div>		
+				  			</div>
 			</div> -->
-		
-		
+
+
 		<!-- records
 		{{> purchaseRecords purchaseId=purchaseId}} -->
 
