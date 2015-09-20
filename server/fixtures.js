@@ -1,6 +1,4 @@
-console.log("Units 1::", Units.find().count());
 if (Units.find().count() === 0){
-	console.log("Units 2::", Units.find().count());
 	Units.insert({
 		name:'шт',
 		longName:'штук',

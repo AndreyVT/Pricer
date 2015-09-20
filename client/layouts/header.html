@@ -1,7 +1,7 @@
 <template name="header">
    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -11,9 +11,9 @@
           </button>
           <a class="navbar-brand" href="/">PRICER</a>
         </div>
-        
+
         <div class="collapse navbar-collapse">
-          {{#if isAdmin}}
+          {{#if isLogged}}
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Покупки</a></li>
             <!--<li><a href="#about">About</a></li>
@@ -33,10 +33,10 @@
           </ul>
           {{/if}}
           <ul class="nav navbar-nav pull-right">
-            <li >Привет,{{>loginButtons}}</li>
+            <li >{{#if isLogged}}Привет,{{/if}}{{>loginButtons}}</li>
           </ul>
-        </div> 
-        
+        </div>
+
       </div>
     </div>
         <!--<div class="row">
@@ -53,8 +53,8 @@
                 </div>
             </div>
         </div>
-            
-        
+
+
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav nav-pills">
@@ -71,7 +71,7 @@
                 </ul>
             </div>
         </div>
-        
+
     -->
-	
-</template>		
+
+</template>
