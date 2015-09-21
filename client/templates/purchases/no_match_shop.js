@@ -3,6 +3,6 @@ Template.noMatchShop.events({
     e.preventDefault();
     var options = {};
     $('#addShopModal').modal(options);
-	//Session.set("shop.name", $("[name='shopName']").val());
+	Session.set("shop.name", $("[name='shopName']").val());
  }
 });

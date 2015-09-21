@@ -1,5 +1,6 @@
 <template name="addPurchase">
 	{{> addShop}}
+    {{> addItem}}
 	<form class="main form">
 		<div class="page-header">
 			<div class="row">
@@ -20,11 +21,7 @@
 			<div class="col-md-4">
 				<label class="control-label" for="shopName">Магазин</label>
 				<div class="controls">
-					{{#if newShopAddTrigger }}
-						{{> addShop}}
-					{{else}}
-						{{> inputAutocomplete settings=settings id="shopName" class="form-control" placeholder="Название магазина" name="shopName" data-supplier-id="new"}}
-					{{/if}}
+					{{> inputAutocomplete settings=settings id="shopName" class="form-control" placeholder="Название магазина" name="shopName" data-supplier-id="new"}}
 				</div>
 			</div>
 
@@ -39,9 +36,7 @@
 		<div class="page-header">
 			<div class="form-group">
 				<label class="control-label" for="productName">Добавить запись</label>
-				{{#if newItemAddTrigger }}
-					{{> addItem}}
-				{{else}}
+			
 					<div class="row">
 						<div class="col-md-5">
 							{{> inputAutocomplete settings=settingsItems id="recordItem" class="form-control" placeholder="Название товара" name="recordItem" data-supplier-id="new"}}
@@ -68,7 +63,6 @@
                             </div>
                         {{/if}}
 					</div>
-				{{/if}}
 			</div>
 		</div>
 

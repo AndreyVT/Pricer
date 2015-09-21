@@ -1,6 +1,6 @@
 Template.addShop.events({
-    "click [data-action='submitAddShop']": function (e) {
-		e.preventDefault() ;
+    "click [data-action='submitAddShop']": function (e, template) {
+		//e.preventDefault() ;
 		var shop = {};
 		shop.shopName = $('#shopNameAdd').val();
 		shop.address = $('#address').val();
@@ -12,6 +12,9 @@ Template.addShop.events({
 		else {
 		    Session.set("shop.name", false);
 		}
+		$('#shopName').val(shop.shopName);
+		template.view.parentView._templateInstance.selectedShop.set(shop);
+		$('#addShopModal').modal('hide');
 	}
 }) ;
 
