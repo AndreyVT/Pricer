@@ -1,11 +1,21 @@
-﻿Template.search.events({
+﻿var searchItems = function (e, template) {
+    template.searchResults.clear();
+    var tmpArray = Items.find({ "name": new RegExp($('#searchText').val(), 'i') }).fetch();
+    template.searchResults.clear();
+    for (var i = 0; i < tmpArray.length; i++) {
+        template.searchResults.push(tmpArray[i]);
+    }
+}
+
+Template.search.events({
     "click [data-action='search']": function (e, template) {
         e.preventDefault();
-        template.searchResults.clear();
-        var tmpArray = Items.find({ "name": new RegExp($('#searchText').val(), 'i') }).fetch();
-        template.searchResults.clear();
-        for (var i = 0; i < tmpArray.length; i++) {
-            template.searchResults.push(tmpArray[i]);
+        searchItems(e, template);
+    },
+    "keydown #searchText": function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            searchItems(e, Template.instance());
         }
     }
 });
