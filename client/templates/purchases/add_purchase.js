@@ -131,27 +131,23 @@ Template.addPurchase.events({
     "autocompleteselect #recordItem": function (event, template, doc) {
         //lastAddedItem = doc;
         template.lastAddedItem.set(doc);
-        var unit = Units.findOne({_id:doc.unitId});
-        $('#countValueLabel').html(unit.name);
+        var unit = Units.findOne(doc.unitId);
+        $('#countValueLabel').text(unit.name);
     },
 });
 
+var calcPrice = function () {
+    var priceValue = $('#priceValue').val();
+    var count = $('#countValue').val();
+    $('#sumRecord').val(priceValue * count);
+};
+
 Template.addPurchase.events({
-  "keydown #priceValue" : function(event){
-    // Allow: backspace, delete, tab, escape, enter and .
-    if (jQuery.inArray(event.keyCode,[46,8,9,27,13,190,191]) !== -1 ||
-         // Allow: Ctrl+A
-        (event.keyCode == 65 && event.ctrlKey === true) ||
-         // Allow: home, end, left, right
-        (event.keyCode >= 35 && event.keyCode <= 39)) {
-             // let it happen, don't do anything
-          return;
+    "keydown #priceValue": function (event) {
+        calcPrice();
+        //(event.keyCode == 65 && event.ctrlKey === true) // Allow: backspace, delete, tab, escape, enter and .
+    },
+    "blur #priceValue": function (event) {
+        calcPrice();
     }
-    else {
-        // Ensure that it is a number and stop the keypress
-        if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
-            event.preventDefault();
-        }
-    }
-  },
 });

@@ -7,6 +7,9 @@ Template.addItem.events({
 		item._id = Items.insert(item);
 		Session.set("addedItem", item);
 		$('#recordItem').val(item.name);
+		var unit = Units.findOne($('#itemUnit').find(":selected").val());
+		$('#countValueLabel').text(unit.name);
+
 		Session.set("item.name", false);
 		template.view.parentView._templateInstance.lastAddedItem.set(item);
 

@@ -46,10 +46,11 @@
                                 <input type="number" class="form-control" id="countValue" name="countValue" placeholder="Кол-во" value="1">
                             </div>
                             <div class="col-md-1">
-                                <input type="number" class="form-control" id="countValueLabel" name="countValueLabel" placeholder="Кол-во" readonly>
+                                <h5  id="countValueLabel" name="countValueLabel"></h5>
+                                <!--<input type="number" class="form-control" id="countValueLabel" name="countValueLabel" placeholder="Кол-во" readonly>-->
                             </div>
                             <div class="col-md-2">
-                                <input type="number" class="form-control" id="priceValue" name="priceValue" placeholder="Цена вопроса">
+                                <input type="number" class="form-control" id="priceValue" name="priceValue" required pattern="\d+(,\d{2})?" placeholder="Цена вопроса">
                             </div>
                             <div class="col-md-2">
                                 <input type="number" class="form-control" id="sumRecord" name="sumRecord" placeholder="Сумма" readonly>
