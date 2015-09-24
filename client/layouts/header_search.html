@@ -12,9 +12,11 @@
         </div>
         
         <div class="collapse navbar-collapse">
-          {{#if isLogged}}
           <ul class="nav navbar-nav">
+            <li><a  target="_blank" href="https://docs.google.com/spreadsheets/d/1g9jn3DPBCwNRqm8LeTopNFnhj4p54EhT2JsvDXT9z5o/edit?usp=sharing">ToDO list</a></li>
+            {{#if isLogged}}
             <li class="active"><a href="{{pathFor 'purchases' }}">Покупки</a></li>
+            {{/if}}
             <!--<li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -30,7 +32,7 @@
               </ul>
             </li>-->
           </ul>
-          {{/if}}
+          
           <ul class="nav navbar-nav pull-right">
             <li >{{#if isLogged}}Привет,{{/if}}{{>loginButtons}}</li>
           </ul>

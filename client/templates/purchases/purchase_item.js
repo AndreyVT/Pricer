@@ -1,8 +1,9 @@
-//purchaseItem
+﻿//purchaseItem
 Template.purchaseItem.events({
   "click [data-action='removePurchase']" : function(e){
     e.preventDefault();
-    Purchases.remove(this._id);
+      //Purchases.remove(this._id);
+    alert('Удаление отключено!');
   },
     "click [data-action='showPurchaseRecords']" : function(e, template){
         e.preventDefault();
