@@ -16,17 +16,17 @@ if(Meteor.isClient){
         this.minPriceValue = new ReactiveVar({});
         this.maxPriceValue = new ReactiveVar({});
         this.value1 = new ReactiveVar();
-        self = this;
+        var that = this;
 
         Meteor.call('findItemPrice', this.data._id, 1, function (error, result) {
             console.log("Min value:", result);
-            self.minPriceValue.set(result);
-            self.value1.set(result.price);
+            that.minPriceValue.set(result);
+            that.value1.set(result.price);
         });
 
         Meteor.call('findItemPrice', this.data._id, -1, function (error, result) {
             console.log("Max value:", result);
-            self.maxPriceValue.set(result);
+            that.maxPriceValue.set(result);
         });
     });
 }
